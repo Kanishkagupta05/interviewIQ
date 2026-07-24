@@ -9,7 +9,7 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import {ServerUrl} from '../App.jsx'
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 function Step2Interview ({interviewData, onFinish}) {
 
@@ -408,7 +408,7 @@ useEffect(()=>{
 
 
                  className='w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-whitepy-3 rounded-xl shadow-md hover:opacity-90 transition flex items-center justify-center gap-1'>
-                  Next Question <BsArrowLeft size={18}/>
+                  Next Question <BsArrowRight size={18}/>
                 </button>
 
 
