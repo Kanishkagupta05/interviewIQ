@@ -170,7 +170,9 @@ useEffect(()=>{
 }, [currentIndex]);
 
 useEffect(()=>{
-  if (!("webkitSpeechRecognition" in window)) return;
+  if (!("webkitSpeechRecognition" in window)) {
+    alert("Speech Recognition not supported in this browser");
+    return};
 
   const recognition = new window.webkitSpeechRecognition();
   recognition.lang ="en-US";
@@ -186,12 +188,23 @@ useEffect(()=>{
 
 },[]);
 
+
 const startMic =()=>{
-  if (recognitionRef.current && !isAIPlaying){
+  console.log("startMic called");
+
+  if (!recognitionRef.current){
+    console.log("recognition not initialized");
+    return;
+  }
+
+  if (!isAIPlaying){
     try{
       recognitionRef.current.start();
+      console.log("recognition started");
     }
-    catch{}
+    catch(err){
+      console.log("start error",err);
+    }
   }
 };
 
