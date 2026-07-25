@@ -14,7 +14,7 @@ import InterviewReport from './pages/InterviewReport.jsx'
 
 
 
-export const ServerUrl="http://localhost:8000"
+export const ServerUrl="https://interviewiq-1-hj7e.onrender.com"
 
 function App() {
   
