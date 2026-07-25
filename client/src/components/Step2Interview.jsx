@@ -90,7 +90,10 @@ function Step2Interview ({interviewData, onFinish}) {
     utterance.onstart=()=>{
       setIsAIPlaying(true);
       stopMic()
-      videoRef.current?.play();
+      if(videoRef.current){
+    videoRef.current.currentTime = 0;
+    videoRef.current.play().catch(err=>console.log(err));
+  }
     };
 
     utterance.onend=()=>{
@@ -318,6 +321,7 @@ useEffect(()=>{
             key={videoSource}
             ref={videoRef} 
             muted
+            autoPlay
             playsInline
             preload='auto'
             className='w-full h-auto object-cover'/>
