@@ -58,7 +58,7 @@ function Step1SetUp ({onStart}) {
     const handleStart = async () =>{
         setLoading(true)
         try{
-            const result = await axios.post(ServerUrl + "/api/interview/generate-questions", {role, experience, mode, resumeText, projects, skills }, {withCredentials:true})
+            const result = await axios.post(ServerUrl + "/api/interview/generate-questions", {role, experience, mode, resumeText, projects, skills }, {withCredentials:true, timeout:30000})
             console.log(result.data)
             if (userData){
                 dispatch(setUserData({...userData , credits:result.data.creditsLeft}))
@@ -70,6 +70,8 @@ function Step1SetUp ({onStart}) {
         }
         catch(error){
             console.log("Backend Error:", error.response?.data);
+            console.log(error);
+            setLoading(false);
 
         }
     }
